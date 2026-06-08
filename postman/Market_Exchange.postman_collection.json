@@ -1,0 +1,152 @@
+{
+  "info": {
+    "name": "Market Exchange API Tests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Order Book Depth",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/v1/depth?symbol=SOL_USDC",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "v1",
+            "depth"
+          ],
+          "query": [
+            {
+              "key": "symbol",
+              "value": "SOL_USDC"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Place Limit Buy Order",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"side\": \"buy\",\n  \"price\": \"69.05\",\n  \"quantity\": \"10\",\n  \"symbol\": \"SOL_USDC\",\n  \"userId\": \"1\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/v1/order",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "v1",
+            "order"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Place Limit Sell Order",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"side\": \"sell\",\n  \"price\": \"69.15\",\n  \"quantity\": \"5\",\n  \"symbol\": \"SOL_USDC\",\n  \"userId\": \"2\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/v1/order",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "v1",
+            "order"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Ticker Info",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/v1/ticker?symbol=SOL_USDC",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "v1",
+            "ticker"
+          ],
+          "query": [
+            {
+              "key": "symbol",
+              "value": "SOL_USDC"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get KLines / Candles",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/v1/kline?symbol=SOL_USDC&interval=1h&startTime=1717171200",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "v1",
+            "kline"
+          ],
+          "query": [
+            {
+              "key": "symbol",
+              "value": "SOL_USDC"
+            },
+            {
+              "key": "interval",
+              "value": "1h"
+            },
+            {
+              "key": "startTime",
+              "value": "1717171200"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
