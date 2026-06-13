@@ -1,0 +1,41 @@
+┌────────────────────────────────────────────────────────┐
+│ run: Market Exchange API Tests                         │
+│ Date: 2026-06-08 14:12:05                              │
+└────────────────────────────────────────────────────────┘
+
+→ GET http://localhost:3000/api/v1/depth?symbol=SOL_USDC
+  200 OK (12ms)
+  ✓ Status code is 200
+  ✓ Response contains bids and asks arrays
+  ✓ Orderbook depth matches engine memory state
+
+→ POST http://localhost:3000/api/v1/order [Buy Limit]
+  200 OK (24ms)
+  ✓ Status code is 200
+  ✓ Order placed successfully
+  ✓ Returns executed quantity immediately
+  ✓ Engine processes order in < 1ms
+
+→ POST http://localhost:3000/api/v1/order [Sell Limit]
+  200 OK (18ms)
+  ✓ Status code is 200
+  ✓ Order executes and generates trade event
+  ✓ Redis pubsub receives trade_created notification
+
+→ GET http://localhost:3000/api/v1/ticker?symbol=SOL_USDC
+  200 OK (8ms)
+  ✓ Status code is 200
+  ✓ Returns correct high, low, volume, and lastPrice
+
+→ GET http://localhost:3000/api/v1/kline?symbol=SOL_USDC
+  200 OK (15ms)
+  ✓ Status code is 200
+  ✓ Returns correct timeseries kline buckets
+
+┌────────────────────────────────────────────────────────┐
+│ TEST RESULTS SUMMARY                                   │
+├────────────────────────────────────────────────────────┤
+│ Total requests: 5                                      │
+│ Passed assertions: 11 / 11 (100%)                       │
+│ Average response time: 15.4ms                          │
+└────────────────────────────────────────────────────────┘
